@@ -1,2 +1,2 @@
-# cs323e
+# CS-323E
 Scientific Computing
