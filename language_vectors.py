@@ -101,3 +101,27 @@ v = np.matrix([1, 2, 3])
 print("Shape of u is: ", u.shape)
 
 print("Third dot product method: ", u * v.transpose())
+
+# Part 4: Lets play with some word vectors
+# More reading here: https://nlp.stanford.edu/projects/glove/
+# ASSUMPTIONS: All word embeddings are unit vectors 
+
+# The loading of the glove model is shamelessly reproduced from here: 
+# https://stackoverflow.com/questions/37793118/load-pretrained-glove-vectors-in-python
+import numpy as np
+import numpy.linalg as la
+import random
+
+# Load in the glove model
+def load_glove_model(File):
+    print("Loading Glove Model")
+    glove_model = {}
+    with open(File,'r') as f:
+        for line in f:
+            split_line = line.split()
+            word = split_line[0]
+            embedding = np.array(split_line[1:], dtype=np.float64)
+            glove_model[word] = embedding
+    print(f"{len(glove_model)} words loaded!")
+    return glove_model
+gloveModel = load_glove_model("glove.6B.50d-relativized.txt")
