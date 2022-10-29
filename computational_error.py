@@ -22,3 +22,9 @@ def f (x, nmax = 100):
 for xin in (5.0, 0.5):
   xout = f (xin)
   print (xin, xout)
+
+a = 1
+b = 10 ** 8
+c = 1
+
+(-b - (((b)**2) - (4*a*c))**0.5) / (2*a)
