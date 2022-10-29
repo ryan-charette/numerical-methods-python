@@ -92,3 +92,16 @@ while round(4*estimated_pi, 6) != true_pi:
     m *= -1
     
 print(round(4*estimated_pi, 6))
+
+# 1.57
+
+# a. E = m*c**2
+
+# b. For most applications, v/c is negligible because v is much less than c. 
+# Therefore, subsequent terms in the series rapidly approach 0.
+
+# c. The c terms cancel in the second term, hence velocity being non-negligible in said term. 
+
+# d. Using 1/sqrt(1 - x) = 1 + (1/2)*x + (3/8)*(x**2) + (5/16)*(x**3) + O(x**4)
+# E = (m*c**2) / sqrt(1-(v/c)**2) = (m*c**2) * (1/sqrt(1 - x)) where x = (v/c)**2
+# E = m*c**2 (1 + ((1/2)*((v/c)**2)) + ((3/8)*((v/c)**2)**2) + ((5/16)*((v/c)**2)**3))
