@@ -14,3 +14,8 @@ print("The len of u is: ", len(u))
 print("First property is: ____, which is computed in python to be ", " for u")
 #2
 print("Second property is: ____, which is computed in python to be ", " for u")
+
+# So what is the shape of u after we transpose it?
+uT = u.transpose()
+print("If I transpose u it is now: \n", uT)
+print("The shape of u is: ", uT.shape)
