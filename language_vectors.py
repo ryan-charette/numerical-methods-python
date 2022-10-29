@@ -28,3 +28,9 @@ print("The len of v is: ", len(v))
 vT = v.transpose()
 print("If I transpose v it is now: \n", vT)
 print("With shape", vT.shape)
+
+# What is the first column of this matrix?
+M = np.matrix([[1,2,3],[4,5,6],[7,8,9]])
+print("\nNow we are working on the matrix M: \n", M)
+print("The shape of M is: ", M.shape)
+print("The len of M is: ", len(M))
