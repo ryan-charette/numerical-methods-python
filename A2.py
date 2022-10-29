@@ -180,3 +180,47 @@ t_min = bisection(f, 0, 10, 0.09, 0.01)
 t_max = bisection(f, 0, 10, 0.11, 0.01)
                         
 print((t_max + t_min) / 2, '+/-', t_max - t_min, 'seconds')
+
+# 2.65
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import scipy as sp
+
+# b
+f = lambda x: x*np.sin(x)-np.log(x)
+
+# i
+x = np.linspace(10**-1,5,100)
+y = f(x)
+x_axis = 0 * x
+
+plt.plot(x,y)
+plt.plot(x, x_axis)
+plt.show()
+
+# ii
+print(sp.optimize.fsolve(f, 3, full_output=1))
+
+# iii
+# output: (array([2.76492175]), {'nfev': 8, 'fjac': array([[-1.]]), 'r': array([2.56493214]), 
+#'qtf': array([1.10844667e-12]), 'fvec': array([0.])}, 1, 'The solution converged.')
+# explanation:
+# (array([2.76492175]) the root is approximately x = 2.76492175
+# {'nfev': 8, It took 8 iterations to get the result
+# 'fjac': array([[-1.]]), [-1] is the orthogonal matrix produced by QR factorization of 
+#         the final approximate Jacobian matrix
+# 'r': array([2.56493214]) upper triangular matrix produced by QR factorization of the same matrix
+# 'qtf': array([1.10844667e-12]) the vector resulting from the product of the transposition of fjac and f(2.76492175)
+# 'fvec': array([0.])}, f(2.76492175) is approximately 0.
+# 1, a solution was found
+# The solution converged, self-explanatory
+
+g = lambda x: np.sin(x+1)**x - x
+# c
+print(sp.optimize.fsolve(g, 1, xtol=10**-6, maxfev=100))
+
+# e
+h = lambda x: [x[0]**2 - x[0]*x[1]**2 - 2, x[0]*x[1] - 2]
+print(sp.optimize.fsolve(h, [5, 0]))
