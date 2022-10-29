@@ -168,3 +168,24 @@ print("Angle between red and yellow vec is: ", np.arccos(red_vec.dot(yellow_vec)
 print("Angle between red and lemon vec is: ", np.arccos(red_vec.dot(lemon_vec)), " radians")
 print("Angle between lemon and computer vec is: ", np.arccos(lemon_vec.dot(computer_vec)), " radians")
 
+# So is orange represented as a fruit or a color here? Same goes for apple being a fruit or a company?
+
+# Consider the built in numpy operations (sort, argsort, arccos), your new knowledge about matrices and vectors,
+# and that u.v = ||u||||v||cos(theta), where theta is the angle between the two vectors.
+# How can we, with as few numpy operations possible, figure out which 20 words are most 
+# associated with orange (or any other word) in our word embeddings? The hope would be to use this information
+# to break the ambiguity for word contexts in our embedding vectors.
+
+# The dictionary is limited, but if you pick an arbitrary index in the dictionary (via random.randint(0, 14920)), 
+# what words are most associated with your choice? Anything surprising?
+
+best = [(10, 'word') for i in range(20)]
+
+for i in range(len(all_keys)):
+    vec = all_embed_matrix[i]
+    relation = np.arccos(orange_vec.dot(vec))
+    if relation < best[-1][0] and relation > 0:
+        best[-1] = (relation, ind2name[i])
+        best.sort()
+
+print(best)
