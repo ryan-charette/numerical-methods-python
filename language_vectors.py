@@ -19,3 +19,12 @@ print("Second property is: ____, which is computed in python to be ", " for u")
 uT = u.transpose()
 print("If I transpose u it is now: \n", uT)
 print("The shape of u is: ", uT.shape)
+
+v = np.array([[1,2,3]])
+print("\nNow we are working on v: \n", v)
+print("The shape of v is: ", v.shape)
+print("The len of v is: ", len(v))
+
+vT = v.transpose()
+print("If I transpose v it is now: \n", vT)
+print("With shape", vT.shape)
