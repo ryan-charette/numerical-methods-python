@@ -51,3 +51,44 @@ f3 = (-7/(3*math.e**3)) * (3 - math.e)**3
 f4 = (11/(3*math.e**4)) * (3 - math.e)**4
 
 print(f0 + f1 + f2 + f3 + f4)
+
+import math
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+#1.55
+
+# a
+# f(x) = 1 / (1 + x)
+# Taylor series: Sum from k=1 to n of (-1)**(k+1) * (1 / x)**k
+
+# b
+# Taylor series of f(x ** 2) = Sum from k=1 to n of (-1)**(k+1) * (1 / x**2)**k
+x = np.linspace(0, 5, 100)
+fig, ax = plt.subplots()
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+
+plt.plot(x, 1/(x+2), label='0th order')
+plt.plot(x, (x+2)**-1 - (x+2)**-2 + (x+2)**-3, label='2nd order')
+plt.plot(x, (x+2)**-1 - (x+2)**-2 + (x+2)**-3 - (x+2)**-4 + (x+2)**-5, label='4th order')
+plt.plot(x, (x+2)**-1 - (x+2)**-2 + (x+2)**-3 - (x+2)**-4 + (x+2)**-5 - (x+2)**-6 + (x+2)**-7, label='6th order')
+plt.legend()
+plt.show()
+
+#c
+# Taylor series for the integral of 1 / (x + 2) = 
+# Sum from k=1 to n of (-1)**(k+1) * (x**(2k - 1))/(2k - 1)
+
+# d
+true_pi = 3.141593
+estimated_pi = 0
+n = 1
+m = 1
+
+while round(4*estimated_pi, 6) != true_pi:
+    estimated_pi += (m/n)
+    n += 2
+    m *= -1
+    
+print(round(4*estimated_pi, 6))
