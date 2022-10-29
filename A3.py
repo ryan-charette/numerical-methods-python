@@ -109,3 +109,25 @@ for n in range(len(data) - 1):
     trapezoidal_reimann_sum += 0.5 * (times[n + 1] - times[n]) * (speeds[n + 1] + (speeds[n]))
 
 print(trapezoidal_reimann_sum, 'ft')
+
+# 3.106
+f = lambda x: x / (1 + x**4) + np.sin(x)
+g = lambda x: (x - 1)**3 * (x - 2)**2 + np.e**(-0.5*x)
+f_min = minimize(f, 0)
+g_min = minimize(g, 0)
+
+f2 = lambda x: - f(x)
+g2 = lambda x: -g(x)
+
+f_max = minimize(f2, 0)
+g_max = minimize(g2, 0)
+
+if abs(f_min.x[0]) < abs(f_max.x[0]):
+    print('Extrema of f(x) closest to 0: x =', f_min.x[0], ', y =', f_min.fun)
+else:
+    print('Extrema of f(x) closest to 0: x =', f_max.x[0], ', y =', -1 * f_max.fun)
+
+if abs(g_min.x[0]) < abs(g_max.x[0]):
+    print('Extrema of g(x) closest to 0: x =', g_min.x[0], ', y =', g_min.fun)
+else:
+    print('Extrema of g(x) closest to 0: x =', g_max.x[0], ', y =', -1 * g_max.fun)
