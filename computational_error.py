@@ -28,3 +28,15 @@ b = 10 ** 8
 c = 1
 
 (-b - (((b)**2) - (4*a*c))**0.5) / (2*a)
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+x = np.linspace(0.5, 1.5, 100)
+fig, ax = plt.subplots()
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+
+ax.plot(x, x**6 + 0.1 * np.log(abs(1 + 3 * (1-x))))
