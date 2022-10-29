@@ -41,7 +41,14 @@ ax.set_ylabel('y')
 
 ax.plot(x, x**6 + 0.1 * np.log(abs(1 + 3 * (1-x))))
 
+# should always be finite
 large = 2.0 ** 1021
 for i in range(3):
     large = large * 2
     print(large)
+    
+# should always be > 0
+small = 1.0 / 2 ** 1000
+for i in range(10):
+    small = small / 500
+    print(i, 1+small, small)
