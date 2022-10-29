@@ -144,3 +144,39 @@ plt.show()
 # Cons include that it only works on differentiable functions, that is has an added margin of error
 # due to the error associated with Taylor series approximations, and that it requires more work than
 # other solutions to be done by hand
+
+# 2.61
+# a : In order for the units to cancel out properly such that s(t) is in meters, k has to be in kg*m / s**2
+#     which is equivalent to Newtons
+
+# b : s(t) = s0 - (m*g/k)*t + (m**2*g)/(k**2) * (1 - math.e**(-k*t/m))
+# s(t) = 0 when the object hits the ground, so the time to fall is the root of this function
+# we will use the Bisection method to detemine the time (in seconds) it would take the object to fall
+
+import math
+import numpy as np
+
+def f(t, k):
+    m = 1
+    g = 9.8
+    s0 = 100
+    return s0 - (m*g/k)*t + (m**2*g)/(k**2) * (1 - math.e**(-k*t/m))
+
+def bisection(f, a, b, k, tol):
+    
+    m = (a + b) / 2
+    
+    if np.abs(f(m, k)) < tol:
+        return m
+    elif f(a, k) * f(m, k) > 0:
+        return bisection(f, m, b, k, tol)
+    else:
+        return bisection(f, a, m, k, tol)
+    
+print(bisection(f, 0, 10, 0.1, 0.01), 'seconds')
+
+# c : These functions give us the longest and shortest possible times based on the error associated with k
+t_min = bisection(f, 0, 10, 0.09, 0.01)
+t_max = bisection(f, 0, 10, 0.11, 0.01)
+                        
+print((t_max + t_min) / 2, '+/-', t_max - t_min, 'seconds')
