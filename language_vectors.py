@@ -125,3 +125,46 @@ def load_glove_model(File):
     print(f"{len(glove_model)} words loaded!")
     return glove_model
 gloveModel = load_glove_model("glove.6B.50d-relativized.txt")
+
+# Make an array containing all the glove word embeddings
+all_embed_matrix = np.array(list(gloveModel.values()))
+
+# Ensure our embeddings are all unit vectors
+all_embed_matrix = all_embed_matrix / np.linalg.norm(all_embed_matrix, axis=-1)[:, np.newaxis]
+
+print("Shape of all_embed_matrix is: ", all_embed_matrix.shape)
+
+# Make a dictionary of keys and their indices for the word embeddings
+all_keys = list(gloveModel.keys())
+name2ind = {k: v for v, k in enumerate(all_keys)}
+ind2name = {v: k for k, v in name2ind.items()}
+
+
+# Examples:
+print("The index of red in the word embedding matrix is: ", name2ind['red'])
+print("The index of apple in the word embedding matrix is: ", name2ind['apple'])
+print("The magnitude of the red word embedding vector is: ", la.norm(all_embed_matrix[name2ind['red']]))
+print("The magnitude of the apple word embedding vector is: ", la.norm(all_embed_matrix[name2ind['apple']]))
+print("The index 545 maps to the word: ", ind2name[545])
+print("The index 2385 maps to the word: ", ind2name[2385])
+
+# Colors
+red_vec = all_embed_matrix[name2ind['red']]
+green_vec = all_embed_matrix[name2ind['green']]
+yellow_vec = all_embed_matrix[name2ind['yellow']]
+orange_vec = all_embed_matrix[name2ind['orange']]
+
+# Fruits
+apple_vec = all_embed_matrix[name2ind['apple'], :]
+lemon_vec = all_embed_matrix[name2ind['lemon'], :]
+
+# More random
+computer_vec = all_embed_matrix[name2ind['computer'], :]
+
+print(orange_vec.shape)
+
+# Example of dot product to find similarity between two words:
+print("Angle between red and yellow vec is: ", np.arccos(red_vec.dot(yellow_vec)), " radians")
+print("Angle between red and lemon vec is: ", np.arccos(red_vec.dot(lemon_vec)), " radians")
+print("Angle between lemon and computer vec is: ", np.arccos(lemon_vec.dot(computer_vec)), " radians")
+
