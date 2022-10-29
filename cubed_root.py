@@ -19,3 +19,16 @@ def cubed_root(n):
 print(cubed_root(8) == round(8**(1/3), 4))
 print(cubed_root(3890) == round(3890**(1/3), 4))
 print(cubed_root(2.1) == round(2.1**(1/3), 4))
+
+# given n > 1, return n**0.5
+
+def square_root(n):
+    old_guess = n / 2
+    new_guess = n
+    while abs(new_guess - old_guess) > 0.000001:
+        old_guess = new_guess
+        new_guess = (( n / old_guess) + old_guess) / 2
+        print(new_guess, abs(new_guess - old_guess))
+    return
+
+square_root(9)
