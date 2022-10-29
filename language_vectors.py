@@ -78,3 +78,14 @@ print("Size of A: ", A.shape)
 print("Size of v: ", v.shape)
 # So what if we now transpose v?
 A * v.transpose()
+
+# Part 3: Geometric interpretations and 3 potential ways to get vector dot products
+import matplotlib.pyplot as plt
+
+u = np.array([1, 3])
+v = np.array([5, 0])
+origin = np.array([0,0])
+
+# Plot the vectors
+plt.quiver(*origin, *u, color=['r'], scale=21)
+plt.quiver(*origin, *v, color=['b'], scale=21)
