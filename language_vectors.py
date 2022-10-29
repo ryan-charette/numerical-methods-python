@@ -57,3 +57,8 @@ A + 1
 
 # So what is A now?
 print(A)
+
+# What is A * A and A * v?
+v = np.array([[1, 2, 3]])
+print("A * A is: \n", A * A)
+print("A * v is: \n", A * v)
