@@ -62,3 +62,10 @@ print(A)
 v = np.array([[1, 2, 3]])
 print("A * A is: \n", A * A)
 print("A * v is: \n", A * v)
+
+# If we convert A to a matrix, or define it that way from the start, what is A * A and A * v now?
+print(type(A))
+A = np.matrix(A)
+print(type(A))
+print("A * A is: ", A * A)
+print("A * v is: ", A * v)
