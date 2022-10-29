@@ -69,3 +69,12 @@ A = np.matrix(A)
 print(type(A))
 print("A * A is: ", A * A)
 print("A * v is: ", A * v)
+
+# What went wrong?
+print("A: ", A)
+print("v: ", v)
+print("")
+print("Size of A: ", A.shape)
+print("Size of v: ", v.shape)
+# So what if we now transpose v?
+A * v.transpose()
