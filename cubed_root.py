@@ -46,3 +46,19 @@ ax.set_ylabel('y')
 plt.plot(x, np.sin(x) + x**2)
 plt.plot(x, 2 * np.log(x) + 5)
 plt.plot(x, np.sin(x) + x**2 - 2*np.log(x) - 5)
+
+def root():
+    a = 0.00001
+    b = 1
+    m = (a + b) / 2
+    f_m = (np.sin(m) + m**2 - 2*np.log(m) - 5)
+    while abs(f_m) > 0.000001:
+        if (f_m) > 0:
+            a = m
+        else:
+            b = m
+        m = (a + b) / 2
+        f_m = (np.sin(m) + m**2 - 2*np.log(m) - 5)
+        
+    return m
+print(root())
