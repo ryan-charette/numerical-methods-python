@@ -11,3 +11,14 @@ ax.plot(x, np.sin(x))
 ax.plot(x, (0) + (x) + (0) - (x**3 / 6) + (0) + (x**5 / 120))
 
 ((2 ** 0.5) ** 2) - 2 # analytically equal to 0
+
+def f (x, nmax = 100):
+  for i in range (nmax):
+    x = (x) ** 0.5
+  for i in range (nmax):
+    x = x**2
+  return x
+
+for xin in (5.0, 0.5):
+  xout = f (xin)
+  print (xin, xout)
