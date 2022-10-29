@@ -32,3 +32,17 @@ def square_root(n):
     return
 
 square_root(9)
+
+import math
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0.05, 5, 100)
+fig, ax = plt.subplots()
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+
+plt.plot(x, np.sin(x) + x**2)
+plt.plot(x, 2 * np.log(x) + 5)
+plt.plot(x, np.sin(x) + x**2 - 2*np.log(x) - 5)
