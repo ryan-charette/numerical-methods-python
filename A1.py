@@ -26,3 +26,28 @@ print(-1125 / 32768) # approximate decimal representation
 # 25 / 24 * 1125 / 32768 = 28125 / 786432
 # = 9375 / 262144 miles
 print(9375 / 262144) # approximate decimal representation
+
+import math
+# 1.54
+
+# f(x) = 1/ln(x)
+# f(e) / 0! * (x - e)**0 = 1
+f0 = 1
+
+# f'(x) = -1 / x(ln(x))**2
+# f'(e) / 1! * (x - e)**1 = (e - x) / e
+f1 = (math.e - 3) / math.e
+
+# f''(x) = [ln(x) + 2] / x**2(ln(x))**3
+# f''(e) / 2! * (x - e)**2 = {[ln(e) + 2] / 2(e**2)} * (x - e)**2
+f2 = ((math.log(math.e) + 2) / (2*(math.e)**2)) * (3 - math.e)**2
+
+# f'''(x) = (-2*(ln(x))**2 + 3*ln(x) + 3) / ((x**3)*(ln(x)**4))
+# f'''(e) / 3! * (x - e)**3 = (-14 / (6 * e**4)) * (x - e)**3
+f3 = (-7/(3*math.e**3)) * (3 - math.e)**3
+
+# f''''(x) = ((6*(ln(x))**3) + (22*(ln(x))**2) + (36*(ln(x))) + 24) / ((x**4) * ((ln(x))**5))
+# f''''(e) / 4! * (x - e)**4 = (88 / (24 * e**4)) * (x - e)**4
+f4 = (11/(3*math.e**4)) * (3 - math.e)**4
+
+print(f0 + f1 + f2 + f3 + f4)
