@@ -93,3 +93,19 @@ plt.plot(x, f(x), label='h(x)')
 plt.plot(x, f_prime, label="h'(x)")
 plt.legend()
 plt.show()
+
+# 3.105
+URL1 = 'https://raw.githubusercontent.com/NumericalMethodsSullivan'
+URL2 = '/NumericalMethodsSullivan.github.io/master/data/'
+URL = URL1+URL2
+data = np.array(pd.read_csv(URL+'Exercise3_bikespeed.csv'))
+
+times = [int(x[0]) for x in data]
+speeds = [int(x[1]) for x in data]
+
+trapezoidal_reimann_sum = 0
+
+for n in range(len(data) - 1):
+    trapezoidal_reimann_sum += 0.5 * (times[n + 1] - times[n]) * (speeds[n + 1] + (speeds[n]))
+
+print(trapezoidal_reimann_sum, 'ft')
