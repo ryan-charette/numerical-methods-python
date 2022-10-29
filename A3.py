@@ -55,3 +55,41 @@ plt.show()
 # This regression is a better fit at higher iterations
 # The reduction in error diminishes with each iteration
 # Essentially, absolute error is logarithmically related to h
+
+# 3.104
+f = lambda x: x / (1 + x**4) 
+# F(x) = arctan(x**2) / 2 + C
+# F(x) | -1, 2 = arctan(4) / 2 - pi / 8 
+# ~= 0.2702097501
+g = lambda x: (x - 1)**3 * (x - 2)**2 
+# G(x) = (x - 1)**6 / 6 - 2(x - 1)**5 / 5 + (x - 1)**4 / 4
+# G(x) | -1, 2 = -27.45
+h = lambda x: np.sin(x**2)
+# H(x) |-1, 2 ~= 1.1150447911
+F = scipy.integrate.quad(f, -1, 2)
+G = scipy.integrate.quad(g, -1, 2)
+H = scipy.integrate.quad(h, -1, 2)
+
+print(abs(0.2702097501 - F[0]) < 1e-10)
+print(abs(-27.45 - G[0]) < 1e-10)
+print(abs(1.1150447911 - H[0]) < 1e-10)
+
+x = np.linspace(-1, 2, 100)
+f_prime = scipy.misc.derivative(f, x, dx=1e-6)
+g_prime = scipy.misc.derivative(g, x, 1e-6)
+h_prime = scipy.misc.derivative(h, x, 1e-6)
+
+plt.plot(x, f(x), label='f(x)')
+plt.plot(x, f_prime, label="f'(x)")
+plt.legend()
+plt.show()
+
+plt.plot(x, f(x), label='g(x)')
+plt.plot(x, f_prime, label="g'(x)")
+plt.legend()
+plt.show()
+
+plt.plot(x, f(x), label='h(x)')
+plt.plot(x, f_prime, label="h'(x)")
+plt.legend()
+plt.show()
