@@ -34,3 +34,8 @@ M = np.matrix([[1,2,3],[4,5,6],[7,8,9]])
 print("\nNow we are working on the matrix M: \n", M)
 print("The shape of M is: ", M.shape)
 print("The len of M is: ", len(M))
+
+# What is the first column of this matrix?
+MT = M.transpose()
+print("If I transpose M it is now: \n", MT)
+print("With shape", MT.shape)
