@@ -54,3 +54,6 @@ print("The last two entries of the vector u are \n",u[-2:])
 
 # What do you expect to happen if we do the operation below?
 A + 1
+
+# So what is A now?
+print(A)
