@@ -51,3 +51,6 @@ u = np.array([1,2,3,4,5,6])
 print("The first 3 entries of the vector u are \n",u[:3])
 print("The last entry of the vector u is \n",u[-1])
 print("The last two entries of the vector u are \n",u[-2:])
+
+# What do you expect to happen if we do the operation below?
+A + 1
