@@ -9,3 +9,5 @@ ax.set_ylabel('y')
 
 ax.plot(x, np.sin(x))
 ax.plot(x, (0) + (x) + (0) - (x**3 / 6) + (0) + (x**5 / 120))
+
+((2 ** 0.5) ** 2) - 2 # analytically equal to 0
