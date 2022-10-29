@@ -40,3 +40,8 @@ ax.set_xlabel('x')
 ax.set_ylabel('y')
 
 ax.plot(x, x**6 + 0.1 * np.log(abs(1 + 3 * (1-x))))
+
+large = 2.0 ** 1021
+for i in range(3):
+    large = large * 2
+    print(large)
