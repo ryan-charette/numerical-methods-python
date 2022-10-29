@@ -89,3 +89,6 @@ origin = np.array([0,0])
 # Plot the vectors
 plt.quiver(*origin, *u, color=['r'], scale=21)
 plt.quiver(*origin, *v, color=['b'], scale=21)
+
+# What does it mean to project one vector onto another? 
+# What would be the visual representation of the projection of the red vector onto the blue vector?
