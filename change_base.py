@@ -1,6 +1,7 @@
 # n is a number in base 10
 # b is a new base
 # returns n in base b
+
 def convert(n, b):
 
     if n == 0:
@@ -10,8 +11,8 @@ def convert(n, b):
     converted_num = []
 
     while current != 0:
-        converted_num.append(str(current % 2))
-        current = current // 2
+        converted_num.append(str(current % b))
+        current = current // b
 
     converted_num.reverse()
     return ''.join(converted_num)
