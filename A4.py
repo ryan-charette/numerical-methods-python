@@ -434,3 +434,17 @@ plt.title('Dataset H, Best Fit Periodic')
 plt.show()
 
 print('Dataset H, Best Fit Periodic: y =', BestParameters.x[0], '+', BestParameters.x[1], 'sin(x) +', BestParameters.x[2], 'np.cos(x)')
+
+# Question 3
+x = np.linspace(0, 2, 100)
+y = (np.sin(1 / (x * (2 - x)))**2)
+
+plt.plot(x,y,'r')
+plt.grid()
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('sin^2(1 / (x * (2 - x)))')
+plt.show()
+
+f = lambda x: (np.sin(1 / (x * (2 - x)))**2)
+print(integrate(1_000_000) / math.pi) # reusing function from Q1
