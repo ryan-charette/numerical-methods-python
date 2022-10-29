@@ -92,3 +92,12 @@ plt.quiver(*origin, *v, color=['b'], scale=21)
 
 # What does it mean to project one vector onto another? 
 # What would be the visual representation of the projection of the red vector onto the blue vector?
+print("Shape of u is: ", u.shape)
+print("First dot product method: ", u[0] * v[0] + u[1] * v[1] + u[2] * v[2])
+print("Second dot product method: ", u.dot(v))
+
+u = np.matrix([1, 2, 3])
+v = np.matrix([1, 2, 3])
+print("Shape of u is: ", u.shape)
+
+print("Third dot product method: ", u * v.transpose())
