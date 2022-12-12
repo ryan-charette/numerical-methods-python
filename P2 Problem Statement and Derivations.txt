@@ -1,0 +1,21 @@
+- You will write a formal statement of the problem that you are going to solve.
+In this paper we will be solving for the 5 Lagrange points in the Jupiter-Sun system to demonstrate the numerical methods used to simulate 2-body systems. Then, we will show a restricted 6-body system containing the Sun, Jupiter, and its 4 largest moons (Io, Europa, Ganymede, and Calisto). For simplicity, we will work under the assumption that Jupiter's orbit is a circle with a radius of 5.2 AU. The Lagrange points of Jupiter are of particular interest because at the stable points L4 and L5 are clusters of asteroids called the Trojan Asteroids. Astronomers believe these asteroids to be remains of the primordial material that formed the outer planets, and their study may reveal new information about the formation of the solar system (Garner). 
+
+https://www.nasa.gov/mission_pages/lucy/overview/index
+
+- You will state (or derive) the equations of motion that you will be solving and discuss the numerical method(s) that you chose to solve the problem.
+
+Let M_1  and M_2  be the two masses,and (r_1 ) ⃗  and (r_2 ) ⃗  be their respective positions.Then using Newton^' s Law of Gravitation,F=(Gm_1 m_2)/r^2 ,the total force exerted on a third mass m,at position r ⃗  will be
+F ⃗=-(GM_1 m)/|r ⃗-(r_1 ) ⃗ |^3  (r ⃗-(r_1 ) ⃗ )-(GM_2 m)/|r ⃗-(r_2 ) ⃗ |^3  (r ⃗-(r_2 ) ⃗ )
+Then by Newton^' second law,the acceleation of the third mass can be described 
+a ⃗=-(GM_1)/|r ⃗-(r_1 ) ⃗ |^3  (r ⃗-(r_1 ) ⃗ )-(GM_2)/|r ⃗-(r_2 ) ⃗ |^3  (r ⃗-(r_2 ) ⃗ )
+The Law of Conservation of Angular Momentum suggests that objects in orbit around the sun are contained on a single plane,so we can assume that there is no acceleration on the z"-" axis.Then if the Sun is positioned at x=-R_⊙  and Jupiter at x=R_J,then the accelation vector can be represented for an object located at (x,y) by the equations
+a_x (x,y)=-(GM_⊙)/((x+R_⊙ )^2+y^2 )^(3/2)  (x+R_⊙ )-(GM_J)/((x-R_J )^2+y^2 )^(3/2)  (x-R_J )
+a_y (x,y)=-(GM_⊙)/((x+R_⊙ )^2+y^2 )^(3/2)  (y)-(GM_J)/((x-R_J )^2+y^2 )^(3/2)  (y) 
+For an object to have rotate synchronously with Jupiter,it would need an accelation such that a ⃗(x,y)=[-ω^2 x,-ω^2 y]  where ω is the angular velocity of Jupiter.Then combining with the equations above,we get that the Lagrange points are found when 
+L(x)=0=a_x (x,y)+ω^2 x=a_y (x,y)+ω^2 y. 
+We can use Newton^' s Method,x_(n+1)=x_n-f(x_n )/(f^' (x_n ) )  to approximate the roots of L(x). This will involve graphing the function L(x)  to find reasonable intial guesses for the roots, and then using an algorithm to improve our guess until a sufficiently precise value is reached. For computational efficieny,we will use a quasi"-" Newton method called Broyden^' s method, where the derivate is replaced with a Jacobian matrix. 
+
+The derivation is mostly covered in the file on Canvas (P2_Lagrange_Points.pdf).
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html
+https://en.wikipedia.org/wiki/Broyden%27s_method
